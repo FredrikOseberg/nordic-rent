@@ -1,5 +1,5 @@
 import ContactForm from '../components/ContactForm'
-import { Mail, MapPin, Phone, Clock } from 'lucide-react'
+import { Mail, MapPin, Clock } from 'lucide-react'
 
 const contactInfo = [
   {
@@ -12,12 +12,6 @@ const contactInfo = [
     icon: MapPin,
     title: 'Location',
     value: 'Oslo, Norway',
-    link: null,
-  },
-  {
-    icon: Phone,
-    title: 'Phone',
-    value: '+47 XXX XX XXX',
     link: null,
   },
   {
