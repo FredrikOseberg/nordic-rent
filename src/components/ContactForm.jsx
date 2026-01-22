@@ -1,29 +1,108 @@
 import { useState } from 'react'
-import { Send, CheckCircle } from 'lucide-react'
+import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    location: '',
+    message: ''
+  })
+  const [formState, setFormState] = useState({
+    status: 'idle', // 'idle' | 'submitting' | 'success' | 'error'
+    errorMessage: null
+  })
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // UI only - would connect to backend/email service later
-    setSubmitted(true)
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  if (submitted) {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setFormState({ status: 'submitting', errorMessage: null })
+
+    try {
+      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (response.ok) {
+        setFormState({ status: 'success', errorMessage: null })
+      } else {
+        throw new Error('Submission failed')
+      }
+    } catch (error) {
+      setFormState({
+        status: 'error',
+        errorMessage: 'Something went wrong. Please try again or email us directly.'
+      })
+    }
+  }
+
+  const resetForm = () => {
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      company: '',
+      location: '',
+      message: ''
+    })
+    setFormState({ status: 'idle', errorMessage: null })
+  }
+
+  if (formState.status === 'success') {
     return (
       <div className="bg-primary-50 rounded-xl p-8 text-center">
         <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
         <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
-        <p className="text-gray-600">
+        <p className="text-gray-600 mb-6">
           We've received your inquiry and will get back to you within 24 hours.
         </p>
+        <button
+          onClick={resetForm}
+          className="px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+        >
+          Submit another inquiry
+        </button>
       </div>
     )
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Honeypot field for spam protection */}
+      <input
+        type="text"
+        name="_gotcha"
+        style={{ display: 'none' }}
+        tabIndex={-1}
+        autoComplete="off"
+      />
+
+      {formState.status === 'error' && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="text-red-800">{formState.errorMessage}</p>
+            <a
+              href="mailto:contact@fremleie.no"
+              className="text-red-600 underline hover:text-red-700 text-sm"
+            >
+              contact@fremleie.no
+            </a>
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
@@ -32,6 +111,9 @@ export default function ContactForm() {
           <input
             type="text"
             id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow"
             placeholder="John"
@@ -44,6 +126,9 @@ export default function ContactForm() {
           <input
             type="text"
             id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
             required
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow"
             placeholder="Doe"
@@ -58,6 +143,9 @@ export default function ContactForm() {
         <input
           type="email"
           id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
           required
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow"
           placeholder="john@company.com"
@@ -71,6 +159,9 @@ export default function ContactForm() {
         <input
           type="text"
           id="company"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow"
           placeholder="Acme Inc."
         />
@@ -82,6 +173,9 @@ export default function ContactForm() {
         </label>
         <select
           id="location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow bg-white"
         >
           <option value="">Select a city</option>
@@ -99,6 +193,9 @@ export default function ContactForm() {
         </label>
         <textarea
           id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
           required
           rows={5}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow resize-none"
@@ -108,10 +205,20 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="w-full md:w-auto px-8 py-4 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center"
+        disabled={formState.status === 'submitting'}
+        className="w-full md:w-auto px-8 py-4 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        Send Inquiry
-        <Send className="ml-2 w-5 h-5" />
+        {formState.status === 'submitting' ? (
+          <>
+            Sending...
+            <Loader2 className="ml-2 w-5 h-5 animate-spin" />
+          </>
+        ) : (
+          <>
+            Send Inquiry
+            <Send className="ml-2 w-5 h-5" />
+          </>
+        )}
       </button>
     </form>
   )
