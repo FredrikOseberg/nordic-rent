@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Send, AlertCircle, Loader2 } from 'lucide-react'
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xreenzky'
 
 export default function ContactForm() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -38,7 +40,7 @@ export default function ContactForm() {
       })
 
       if (response.ok) {
-        setFormState({ status: 'success', errorMessage: null })
+        navigate('/thank-you')
       } else {
         throw new Error('Submission failed')
       }
@@ -48,37 +50,6 @@ export default function ContactForm() {
         errorMessage: 'Something went wrong. Please try again or email us directly.'
       })
     }
-  }
-
-  const resetForm = () => {
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      company: '',
-      location: '',
-      apartments: '',
-      message: ''
-    })
-    setFormState({ status: 'idle', errorMessage: null })
-  }
-
-  if (formState.status === 'success') {
-    return (
-      <div className="bg-primary-50 rounded-xl p-8 text-center">
-        <CheckCircle className="w-16 h-16 text-primary-600 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
-        <p className="text-gray-600 mb-6">
-          We've received your inquiry and will get back to you within 24 hours.
-        </p>
-        <button
-          onClick={resetForm}
-          className="px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
-        >
-          Submit another inquiry
-        </button>
-      </div>
-    )
   }
 
   return (
