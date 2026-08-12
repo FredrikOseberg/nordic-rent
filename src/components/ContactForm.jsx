@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react'
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xreenzky'
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -8,6 +10,7 @@ export default function ContactForm() {
     email: '',
     company: '',
     location: '',
+    apartments: '',
     message: ''
   })
   const [formState, setFormState] = useState({
@@ -25,7 +28,7 @@ export default function ContactForm() {
     setFormState({ status: 'submitting', errorMessage: null })
 
     try {
-      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +42,7 @@ export default function ContactForm() {
       } else {
         throw new Error('Submission failed')
       }
-    } catch (error) {
+    } catch {
       setFormState({
         status: 'error',
         errorMessage: 'Something went wrong. Please try again or email us directly.'
@@ -54,6 +57,7 @@ export default function ContactForm() {
       email: '',
       company: '',
       location: '',
+      apartments: '',
       message: ''
     })
     setFormState({ status: 'idle', errorMessage: null })
@@ -94,10 +98,10 @@ export default function ContactForm() {
           <div>
             <p className="text-red-800">{formState.errorMessage}</p>
             <a
-              href="mailto:contact@fremleie.no"
+              href="mailto:hello@nordicrent.no"
               className="text-red-600 underline hover:text-red-700 text-sm"
             >
-              contact@fremleie.no
+              hello@nordicrent.no
             </a>
           </div>
         </div>
@@ -154,7 +158,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-          Company Name
+          Company Name *
         </label>
         <input
           type="text"
@@ -162,29 +166,50 @@ export default function ContactForm() {
           name="company"
           value={formData.company}
           onChange={handleChange}
+          required
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow"
           placeholder="Acme Inc."
         />
       </div>
 
-      <div>
-        <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
-          Preferred Location in Norway
-        </label>
-        <select
-          id="location"
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow bg-white"
-        >
-          <option value="">Select a city</option>
-          <option value="oslo">Oslo</option>
-          <option value="bergen">Bergen</option>
-          <option value="trondheim">Trondheim</option>
-          <option value="stavanger">Stavanger</option>
-          <option value="other">Other / Not sure</option>
-        </select>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+            Preferred Location in Norway
+          </label>
+          <select
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow bg-white"
+          >
+            <option value="">Select a city</option>
+            <option value="oslo">Oslo</option>
+            <option value="bergen">Bergen</option>
+            <option value="trondheim">Trondheim</option>
+            <option value="stavanger">Stavanger</option>
+            <option value="other">Other / Not sure</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="apartments" className="block text-sm font-medium text-gray-700 mb-2">
+            Apartments Needed
+          </label>
+          <select
+            id="apartments"
+            name="apartments"
+            value={formData.apartments}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow bg-white"
+          >
+            <option value="">Select an amount</option>
+            <option value="1">1 apartment</option>
+            <option value="2-5">2–5 apartments</option>
+            <option value="6+">6 or more apartments</option>
+            <option value="unsure">Not sure yet</option>
+          </select>
+        </div>
       </div>
 
       <div>
@@ -199,7 +224,7 @@ export default function ContactForm() {
           required
           rows={5}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-shadow resize-none"
-          placeholder="Please describe your ideal apartment: number of bedrooms, budget range, move-in date, and any other preferences..."
+          placeholder="Who is relocating and when? Include apartment sizes, budget range per unit, move-in dates, and any other preferences..."
         />
       </div>
 
