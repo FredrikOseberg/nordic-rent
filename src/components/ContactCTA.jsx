@@ -12,7 +12,7 @@ export default function ContactCTA() {
           Tell us about your relocation plans and our local experts will handle the rest.
           You'll hear from us within 24 hours.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Link
             to="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-primary-800 text-white rounded-lg font-semibold hover:bg-primary-900 transition-colors"
@@ -20,12 +20,6 @@ export default function ContactCTA() {
             Request a Consultation
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
-          <a
-            href="mailto:hello@nordicrent.no"
-            className="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:border-gray-400 transition-colors"
-          >
-            Email Us Directly
-          </a>
         </div>
       </div>
     </section>

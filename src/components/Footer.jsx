@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, MapPin } from 'lucide-react'
+import { MapPin, MessageSquare } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -52,10 +52,10 @@ export default function Footer() {
                 <span>Oslo, Norway</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-primary-400" />
-                <a href="mailto:hello@nordicrent.no" className="hover:text-white transition-colors">
-                  hello@nordicrent.no
-                </a>
+                <MessageSquare className="w-5 h-5 text-primary-400" />
+                <Link to="/contact" className="hover:text-white transition-colors">
+                  Send us an inquiry
+                </Link>
               </li>
             </ul>
           </div>
