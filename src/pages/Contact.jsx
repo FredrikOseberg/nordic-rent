@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
-import { Mail, MapPin, Clock } from 'lucide-react'
+import { MapPin, Clock } from 'lucide-react'
 
 const contactInfo = [
-  {
-    icon: Mail,
-    title: 'Email',
-    value: 'hello@nordicrent.no',
-    link: 'mailto:hello@nordicrent.no',
-  },
   {
     icon: MapPin,
     title: 'Location',

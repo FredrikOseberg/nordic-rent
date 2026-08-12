@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Search, Users, FileCheck, Key, Video, Shield, Clock, HelpCircle, ArrowRight } from 'lucide-react'
+import { Search, Users, FileCheck, Key, Video, HelpCircle, ArrowRight } from 'lucide-react'
 
 const services = [
   {
@@ -55,17 +55,6 @@ const services = [
       'Property condition documentation',
       'Utility setup guidance',
       'Local registration assistance',
-    ],
-  },
-  {
-    icon: Shield,
-    title: 'Ongoing Support',
-    description: 'Our service doesn\'t end at move-in. We\'re here to help with any landlord communications during your tenancy.',
-    features: [
-      'Post-move-in check-ins',
-      'Maintenance request assistance',
-      'Lease renewal support',
-      'Move-out coordination',
     ],
   },
 ]
