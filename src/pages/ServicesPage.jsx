@@ -81,7 +81,7 @@ const faqs = [
   },
   {
     question: 'What are your fees?',
-    answer: 'Our fees depend on the level of service required. Contact us for a personalized quote based on your specific needs.',
+    answer: 'Our fees depend on the scope of the engagement and the number of apartments required. Contact us for a written quote — all pricing is agreed up front, with no hidden costs.',
   },
   {
     question: 'Do you help with furnished and unfurnished apartments?',
@@ -100,7 +100,7 @@ export default function ServicesPage() {
               Our Services
             </h1>
             <p className="text-xl text-primary-100">
-              Complete rental assistance for foreign businesses in Norway. From search to move-in, we handle every detail.
+              Complete rental assistance for companies relocating employees to Norway. From search to move-in, we handle every detail.
             </p>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function ServicesPage() {
             {services.map((service) => (
               <div
                 key={service.title}
-                className="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow"
+                className="bg-gray-50 rounded-xl p-8 border border-gray-200 hover:border-primary-300 transition-colors"
               >
                 <div className="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6">
                   <service.icon className="w-7 h-7 text-primary-600" />

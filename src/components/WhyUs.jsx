@@ -32,11 +32,14 @@ export default function WhyUs() {
     <section className="py-20 bg-primary-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary-300 mb-3">
+            Why Nordic Rent
+          </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Foreign Businesses Choose Us
+            Why International Companies Choose Us
           </h2>
           <p className="text-lg text-primary-200 max-w-2xl mx-auto">
-            Relocating to Norway comes with unique challenges. We solve them all.
+            Relocating employees to Norway comes with predictable obstacles. We remove each one.
           </p>
         </div>
 
@@ -44,7 +47,7 @@ export default function WhyUs() {
           {challenges.map((item) => (
             <div
               key={item.title}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-8"
+              className="bg-white/5 border border-white/10 rounded-xl p-8"
             >
               <div className="flex items-start space-x-4">
                 <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center shrink-0">

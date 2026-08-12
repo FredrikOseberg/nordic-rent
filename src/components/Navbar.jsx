@@ -27,7 +27,7 @@ export default function Navbar() {
                   <circle cx="12" cy="14" r="2" fill="currentColor" />
                 </svg>
               </div>
-              <span className="text-xl font-semibold text-gray-900">Nordic Rent</span>
+              <span className="text-xl font-semibold text-gray-900 tracking-tight">Nordic Rent</span>
             </Link>
           </div>
 
@@ -48,9 +48,9 @@ export default function Navbar() {
             ))}
             <Link
               to="/contact"
-              className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
+              className="bg-primary-800 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-900 transition-colors"
             >
-              Get Started
+              Request a Consultation
             </Link>
           </div>
 
@@ -87,9 +87,9 @@ export default function Navbar() {
             <Link
               to="/contact"
               onClick={() => setIsOpen(false)}
-              className="block bg-primary-600 text-white px-4 py-2 rounded-lg text-center font-medium"
+              className="block bg-primary-800 text-white px-4 py-2 rounded-lg text-center font-medium"
             >
-              Get Started
+              Request a Consultation
             </Link>
           </div>
         </div>

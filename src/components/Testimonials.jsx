@@ -26,11 +26,14 @@ export default function Testimonials() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary-600 mb-3">
+            Client Experiences
+          </p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What Our Clients Say
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We've helped businesses from around the world find their home in Norway.
+            Companies from around the world rely on us to house their teams in Norway.
           </p>
         </div>
 
@@ -38,7 +41,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-xl p-8 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
             >
               <Quote className="w-10 h-10 text-primary-200 mb-4" />
               <p className="text-gray-700 mb-6 leading-relaxed">

@@ -6,18 +6,18 @@ export default function ContactCTA() {
     <section className="py-20 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Ready to Find Your Norwegian Home?
+          Ready to House Your Team in Norway?
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-          Tell us about your requirements and let our local experts handle the rest.
-          We'll get back to you within 24 hours.
+          Tell us about your relocation plans and our local experts will handle the rest.
+          You'll hear from us within 24 hours.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary-800 text-white rounded-lg font-semibold hover:bg-primary-900 transition-colors"
           >
-            Get Started Today
+            Request a Consultation
             <ArrowRight className="ml-2 w-5 h-5" />
           </Link>
           <a

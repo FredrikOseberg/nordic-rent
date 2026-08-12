@@ -29,11 +29,14 @@ export default function Services() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary-600 mb-3">
+            What We Do
+          </p>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Everything you need to secure rental accommodation in Norway, handled by local experts who understand the market.
+            Everything your company needs to secure rental accommodation in Norway, handled by local experts who know the market.
           </p>
         </div>
 
@@ -41,7 +44,7 @@ export default function Services() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="group p-8 bg-gray-50 rounded-xl hover:bg-primary-50 transition-colors"
+              className="group p-8 bg-gray-50 rounded-xl border border-gray-200 hover:border-primary-300 transition-colors"
             >
               <div className="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary-200 transition-colors">
                 <service.icon className="w-7 h-7 text-primary-600" />

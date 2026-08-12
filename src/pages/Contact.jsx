@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ContactForm from '../components/ContactForm'
 import { Mail, MapPin, Clock } from 'lucide-react'
 
@@ -33,7 +34,7 @@ export default function Contact() {
               Get in Touch
             </h1>
             <p className="text-xl text-primary-100">
-              Ready to find your Norwegian home? Tell us about your requirements and we'll get back to you within 24 hours.
+              Tell us about your company's relocation plans and we'll respond within 24 hours with a proposed way forward.
             </p>
           </div>
         </div>
@@ -112,12 +113,12 @@ export default function Contact() {
           <p className="text-gray-600 mb-6">
             Check out our services page for detailed information about what we offer and frequently asked questions.
           </p>
-          <a
-            href="/services"
+          <Link
+            to="/services"
             className="text-primary-600 font-semibold hover:text-primary-700 transition-colors"
           >
             View Services & FAQ →
-          </a>
+          </Link>
         </div>
       </section>
     </div>

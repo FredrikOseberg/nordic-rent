@@ -20,9 +20,9 @@ const values = [
 ]
 
 const stats = [
-  { number: '50+', label: 'Businesses Helped' },
+  { number: '50+', label: 'Companies Served' },
   { number: '4', label: 'Major Cities Covered' },
-  { number: '100%', label: 'Client Satisfaction' },
+  { number: '2–4 wks', label: 'Typical Search Time' },
   { number: '24h', label: 'Response Time' },
 ]
 
@@ -37,7 +37,7 @@ export default function About() {
               About Nordic Rent
             </h1>
             <p className="text-xl text-primary-100">
-              We bridge the gap between foreign businesses and the Norwegian rental market.
+              We bridge the gap between international companies and the Norwegian rental market.
             </p>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function About() {
               </h2>
               <div className="prose prose-lg text-gray-600">
                 <p className="mb-4">
-                  Nordic Rent was founded with a simple mission: to make finding rental accommodation in Norway as easy for foreign businesses as it is for locals.
+                  Nordic Rent was founded with a simple mission: to make securing rental accommodation in Norway as straightforward for international companies as it is for locals.
                 </p>
                 <p className="mb-4">
                   We've seen firsthand how challenging it can be for international companies to navigate the Norwegian rental market. Language barriers, unfamiliar regulations, and the complexities of remote apartment hunting can turn what should be an exciting relocation into a stressful ordeal.
@@ -90,7 +90,7 @@ export default function About() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="bg-white rounded-xl p-8 text-center shadow-sm"
+                className="bg-white rounded-xl p-8 text-center border border-gray-200 shadow-sm"
               >
                 <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-primary-600" />

@@ -18,8 +18,9 @@ export default function Footer() {
               <span className="text-xl font-semibold text-white">Nordic Rent</span>
             </Link>
             <p className="text-gray-400 max-w-md">
-              We help foreign businesses find the perfect rental apartments in Norway.
-              Let us handle the landlord communications while you focus on your business.
+              Corporate rental services for companies relocating employees to Norway.
+              We source apartments, negotiate with landlords, and manage contracts —
+              so you can focus on your business.
             </p>
           </div>
 
