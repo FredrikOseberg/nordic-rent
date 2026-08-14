@@ -1,0 +1,33 @@
+<svg width="1200" height="628" viewBox="0 0 1200 628" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#142130"/>
+      <stop offset="1" stop-color="#2e455c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#517da0" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#517da0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="628" fill="url(#bg)"/>
+  <circle cx="1060" cy="60" r="460" fill="url(#glow)"/>
+
+  <!-- Mountain silhouettes -->
+  <path d="M0 628 L0 508 L190 366 L340 492 L480 340 L650 512 L810 330 L985 502 L1105 412 L1200 470 L1200 628 Z" fill="#1d2f42" opacity="0.9"/>
+  <path d="M0 628 L0 556 L225 456 L405 556 L565 436 L765 566 L925 456 L1085 546 L1200 496 L1200 628 Z" fill="#34506d" opacity="0.5"/>
+
+  <!-- Logo mark + wordmark -->
+  <g transform="translate(84,140)">
+    <rect width="84" height="84" rx="20" fill="#3e6386"/>
+    <g transform="translate(14,14) scale(2.33)" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 21l9-18 9 18"/>
+      <circle cx="12" cy="14" r="2" fill="#ffffff" stroke="none"/>
+    </g>
+    <text x="112" y="60" font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="-1" fill="#ffffff">Nordic Rent</text>
+  </g>
+
+  <!-- Tagline -->
+  <text x="86" y="308" font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="34" font-weight="500" fill="#e8eef4">Apartment rentals for expats &amp; companies in Norway</text>
+  <text x="86" y="360" font-family="Inter, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" font-weight="400" fill="#a3bdd2">Search &#183; Negotiation &#183; Contracts &#183; Move-in</text>
+</svg>
