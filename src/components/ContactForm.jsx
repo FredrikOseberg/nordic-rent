@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Send, AlertCircle, Loader2 } from 'lucide-react'
-
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xreenzky'
+import { INQUIRIES_ENDPOINT } from '../config/api'
 
 export default function ContactForm() {
   const navigate = useNavigate()
@@ -13,7 +12,8 @@ export default function ContactForm() {
     company: '',
     location: '',
     apartments: '',
-    message: ''
+    message: '',
+    _gotcha: ''
   })
   const [formState, setFormState] = useState({
     status: 'idle', // 'idle' | 'submitting' | 'success' | 'error'
@@ -30,7 +30,7 @@ export default function ContactForm() {
     setFormState({ status: 'submitting', errorMessage: null })
 
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(INQUIRIES_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,6 +58,8 @@ export default function ContactForm() {
       <input
         type="text"
         name="_gotcha"
+        value={formData._gotcha}
+        onChange={handleChange}
         style={{ display: 'none' }}
         tabIndex={-1}
         autoComplete="off"

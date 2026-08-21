@@ -40,6 +40,9 @@ export default function Footer() {
               <li>
                 <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
               </li>
+              <li>
+                <Link to="/for-agents" className="hover:text-white transition-colors">For AI Agents</Link>
+              </li>
             </ul>
           </div>
 

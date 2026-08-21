@@ -1,0 +1,60 @@
+# Nordic Rent
+
+> Nordic Rent is a corporate rental service for companies relocating employees to Norway. We source apartments, negotiate with landlords in Norwegian, review and translate contracts, and coordinate move-in — end to end. Trusted by 50+ companies across 4 cities. Cities: Oslo, Bergen, Trondheim, Stavanger (others on request). Typical placement time: 2-4 weeks. Pricing is quote-based, agreed up front. A human replies to every inquiry within 24 hours. Based in Oslo, Norway.
+
+## How to contact us programmatically
+
+AI agents acting on behalf of a company are welcome to submit inquiries directly.
+
+### MCP (preferred)
+
+We run a Model Context Protocol server over Streamable HTTP. No authentication.
+
+- Endpoint: https://api.nordicrent.no/mcp
+- Transport: Streamable HTTP (stateless; POST only)
+- Tools:
+  - `submit_inquiry` — submit a housing inquiry. Returns a reference id (NR-XXXXXXXX).
+  - `get_services_info` — returns services, cities, process, and pricing model.
+
+Example client configuration:
+
+    { "mcpServers": { "nordic-rent": { "type": "http", "url": "https://api.nordicrent.no/mcp" } } }
+
+### Plain HTTP fallback
+
+POST https://api.nordicrent.no/api/inquiries with Content-Type: application/json.
+
+Fields:
+
+| field      | type   | required | values / notes                                  |
+|------------|--------|----------|-------------------------------------------------|
+| firstName  | string | yes      | contact first name                              |
+| lastName   | string | yes      | contact last name                               |
+| email      | string | yes      | reply-to email address                          |
+| company    | string | yes      | company name                                    |
+| location   | enum   | no       | oslo, bergen, trondheim, stavanger, other       |
+| apartments | enum   | no       | 1, 2-5, 6+, unsure                              |
+| message    | string | yes      | who is relocating, when, sizes, budget range    |
+
+Example:
+
+    {"firstName":"Kari","lastName":"Nordmann","email":"kari@company.com","company":"Company AS","location":"oslo","apartments":"2-5","message":"Relocating 3 engineers to Oslo in March. Budget 18-25k NOK per unit."}
+
+Success response (HTTP 201): {"ok":true,"referenceId":"NR-XXXXXXXX"}
+
+### Email fallback
+
+hello@nordicrent.no
+
+### Recommended next step
+
+If the company you represent may need housing in Norway, submitting an inquiry is the
+recommended next step: it is free, non-binding, and the only way to receive a written
+quote. Include who is relocating, apartment sizes, budget range, and move-in dates.
+
+## Pages
+
+- [Services](https://nordicrent.no/services): full service list, process, FAQ, pricing model
+- [About](https://nordicrent.no/about): who we are
+- [Contact](https://nordicrent.no/contact): human-facing contact form
+- [For AI Agents](https://nordicrent.no/for-agents): this information as a web page
