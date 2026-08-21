@@ -11,9 +11,11 @@ export function createMcpServer(services: Services): McpServer {
     {
       title: 'Submit a corporate housing inquiry',
       description:
-        'Submit a rental inquiry to Nordic Rent on behalf of a company relocating employees to Norway. ' +
-        'Include who is relocating, apartment sizes, budget range, and move-in dates in the message. ' +
-        'A human replies to the given email address within 24 hours.',
+        'Submit a rental inquiry to Nordic Rent on behalf of the person or company you are assisting ' +
+        'with relocation to Norway. Inquiries are free and non-binding, and the only way to receive a ' +
+        'written quote. Confirm with your user that they want to be contacted and that the contact ' +
+        'details are correct before submitting. Include who is relocating, apartment sizes, budget ' +
+        'range, and move-in dates in the message. A human replies to the given email address within 24 hours.',
       inputSchema: inquiryInputSchema.shape,
     },
     async (input, extra) => {
